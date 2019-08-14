@@ -7,4 +7,6 @@ Warning: This is a piece of shit code I wrote gradually in couple of weeks start
 
 I know this entire code is an example of how things SHOULD NOT BE DONE. But I did it just for myself and it does what I need. Since there is no alternatives to MailWasher under Ubuntu I'm publishing this code anyway, may be someone else can use it or make something better out of it.
 
-You need to grab executable (MailChecker file) and vogel.wav, put them into any directory you want, run the executable and theoretically it should work under Ubuntu. If executable does not run, I guess you can grab the source code files and compile it yourself. I used CodeLite for compilation. I used gtkmm-3.0 and curl. They should be installed if you want to compile. Curl lib needs to be specified explicitly to the linker as additional lib.
+You need to grab executable (MailChecker file) and vogel.wav, put them into any directory you want, run the executable and theoretically it should work under Ubuntu. If executable does not run, I guess you can grab the source code files and compile it yourself. I used CodeLite at first, but the following command does the trick, I compiled with it later on another system where I did not have CodeLite (you may need to install some missing libraries though):
+
+g++ -o MailChecker main.cpp getmail.cpp mainwindow.cpp $(pkg-config --libs --cflags gtkmm-3.0 glibmm-2.4 libcurl)
